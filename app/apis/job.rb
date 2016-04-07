@@ -27,8 +27,15 @@ class JobAPI < Grape::API
       stat
     end
 
+    post :status do
+      status = {}
+      Job.in(job_id: params[:job_ids]).each do |job|
+        status[job.job_id] = job.status
+      end
+      status
+    end
+
     post do
-      puts params
       exe_name = params[:file][:filename]
       job_id = Counter.next_sequence('job')
       Job.create!(job_id: job_id, name: exe_name, status: 'INIT', exe_name: exe_name)
