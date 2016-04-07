@@ -1,0 +1,11 @@
+job:
+  max_running: 10
+
+host:
+  max_running: 5
+  max_cpu_core: 5
+
+region:
+  type: rocci
+  url: https://vmdirac03.ihep.ac.cn:11443
+  image: uuid_sl65_vmdirac_58
